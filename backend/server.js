@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://mongo:27017/employee"; // Default for Docker
+const MONGO_URI = process.env.MONGO_URI ; 
 const app = express();
 const db = monk(MONGO_URI);
 const tatianaCollection = db.get("Tatiana-Herwitz");
