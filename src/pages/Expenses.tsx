@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import navigation hook
 import { fetchTatianaData } from "../utils/api";
 import ExpenseItem from "../components/ExpenseItem";
-import ProductCard from "../components/ProductCard";
-import PromoCard from "../components/PromoCard";
 
 const Expenses = () => {
   const [tatianaData, setTatianaData] = useState<any>(null);
@@ -36,7 +34,7 @@ const Expenses = () => {
           <h3 className="text-lg font-semibold mt-4">All Expenses</h3>
           <div className="relative">
             <div className="flex flex-col gap-2">
-              <div onClick={() => navigate(`/expenses/0`)} className="cursor-pointer">
+              <div onClick={() => navigate(`/expenses/1`)} className="cursor-pointer">
                 <ExpenseItem
                   name={tatianaData.expenses[0].company}
                   date={tatianaData.expenses[0].date}
@@ -45,7 +43,7 @@ const Expenses = () => {
                   photo="/src/assets/logos/avanade.jpg"
                 />
               </div>
-              <div onClick={() => navigate(`/expenses/1`)} className="cursor-pointer">
+              <div onClick={() => navigate(`/expenses/2`)} className="cursor-pointer">
                 <ExpenseItem
                   name={tatianaData.expenses[1].company}
                   date={tatianaData.expenses[1].date}
@@ -54,7 +52,7 @@ const Expenses = () => {
                   photo="/src/assets/logos/Bougue.png"
                 />
               </div>
-              <div onClick={() => navigate(`/expenses/2`)} className="cursor-pointer">
+              <div onClick={() => navigate(`/expenses/3`)} className="cursor-pointer">
                 <ExpenseItem
                   name={tatianaData.expenses[2].company}
                   date={tatianaData.expenses[2].date}
@@ -63,7 +61,7 @@ const Expenses = () => {
                   photo="/src/assets/logos/magesty.jpg"
                 />
               </div>
-              <div onClick={() => navigate(`/expenses/3`)} className="cursor-pointer">
+              <div onClick={() => navigate(`/expenses/4`)} className="cursor-pointer">
                 <ExpenseItem
                   name={tatianaData.expenses[3].company}
                   date={tatianaData.expenses[3].date}
@@ -72,7 +70,7 @@ const Expenses = () => {
                   photo="/src/assets/profile-pictures/Angela.jpg"
                 />
               </div>
-              <div onClick={() => navigate(`/expenses/4`)} className="cursor-pointer">
+              <div onClick={() => navigate(`/expenses/5`)} className="cursor-pointer">
                 <ExpenseItem
                   name={tatianaData.expenses[4].company}
                   date={tatianaData.expenses[4].date}
@@ -81,7 +79,7 @@ const Expenses = () => {
                   photo="/src/assets/logos/Star-train.jpg"
                 />
               </div>
-              <div onClick={() => navigate(`/expenses/5`)} className="cursor-pointer">
+              <div onClick={() => navigate(`/expenses/6`)} className="cursor-pointer">
                 <ExpenseItem
                   name={tatianaData.expenses[5].company}
                   date={tatianaData.expenses[5].date}
@@ -92,27 +90,6 @@ const Expenses = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Right Sidebar */}
-        <div className="col-span-3 flex flex-col gap-4">
-          {/* Top Products in Two Columns */}
-          <h3 className="text-lg font-semibold">Top Products</h3>
-          <div className="grid grid-cols-2 gap-4">
-            <ProductCard
-              title={tatianaData.topProducts[0].name}
-              category={tatianaData.topProducts[0].category}
-              amount={tatianaData.topProducts[0].price}
-            />
-            <ProductCard
-              title={tatianaData.topProducts[1].name}
-              category={tatianaData.topProducts[1].category}
-              amount={tatianaData.topProducts[1].price}
-            />
-          </div>
-
-          {/* Promo Card */}
-          <PromoCard />
         </div>
       </div>
     </>

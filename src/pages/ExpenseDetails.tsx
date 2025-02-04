@@ -4,7 +4,7 @@ import { fetchTatianaData } from "../utils/api";
 
 
 const ExpenseDetails = () => {
-  const { expenseId } = useParams(); // Get the expense index from URL
+  const { expenseId } = useParams();
   const [tatianaData, setTatianaData] = useState<any>(null);
   const [expense, setExpense] = useState<any>(null);
 
@@ -13,7 +13,7 @@ const ExpenseDetails = () => {
       setTatianaData(data);
 
       // Convert expenseId to a number and check if it's valid
-      const index = Number(expenseId);
+      const index = Number(expenseId) - 1;
       if (!isNaN(index) && data.expenses[index]) {
         setExpense(data.expenses[index]);
       }
@@ -24,43 +24,46 @@ const ExpenseDetails = () => {
 
   return (
     <>
-      <div className="p-6 max-w-xl mx-auto">
-        {/* Profile Photo */}
-        <div className="flex items-center space-x-4 mb-6">
-          <img
-            src={
-              expense.company === "Avanada Inc."
-                ? "/src/assets/logos/avanade.jpg"
-                : expense.company === "Bougue Mc"
-                ? "/src/assets/logos/Bougue.png"
-                : expense.company === "Magesty"
-                ? "/src/assets/logos/magesty.jpg"
-                : expense.company === "Angela Stant"
-                ? "/src/assets/profile-pictures/Angela.jpg"
-                : expense.company === "Star Train&J"
-                ? "/src/assets/logos/Star-train.jpg"
-                : "/src/assets/logos/default.jpg"
-            }
-            alt="Profile"
-            className="w-16 h-16 rounded-full object-cover"
-          />
-          <div>
-            <h3 className="text-xl font-semibold">{expense.company}</h3>
+      <div className="grid grid-cols-12 gap-4 p-6">
+        {/* Left Column - Expense Details */}
+        <div className="col-span-9 bg-white p-6 rounded-xl shadow-md">
+          {/* Profile Photo and Company Name */}
+          <div className="flex items-center space-x-4 mb-6">
+            <img
+              src={
+                expense.company === "Avanada Inc."
+                  ? "/src/assets/logos/avanade.jpg"
+                  : expense.company === "Bougue Mc"
+                  ? "/src/assets/logos/Bougue.png"
+                  : expense.company === "Magesty"
+                  ? "/src/assets/logos/magesty.jpg"
+                  : expense.company === "Angela Stant"
+                  ? "/src/assets/profile-pictures/Angela.jpg"
+                  : expense.company === "Star Train&J"
+                  ? "/src/assets/logos/Star-train.jpg"
+                  : "/src/assets/logos/default.jpg"
+              }
+              alt="Profile"
+              className="w-16 h-16 rounded-full object-cover"
+            />
+            <div>
+              <h3 className="text-xl font-semibold">{expense.company}</h3>
+            </div>
           </div>
-        </div>
 
-        {/* Transaction Date */}
-        <div className="mb-4">
-          <p className="font-medium">Transaction Date:</p>
-          <p>{expense.date}</p>
-        </div>
+          {/* Transaction Date */}
+          <div className="mb-4">
+            <p className="font-medium">Transaction Date:</p>
+            <p>{expense.date}</p>
+          </div>
 
-        {/* Transaction Amount */}
-        <div>
-          <p className="font-medium">Transaction Amount:</p>
-          <p className={`text-xl ${expense.amount.startsWith("+") ? "text-green-500" : "text-red-500"}`}>
-            {expense.amount}
-          </p>
+          {/* Transaction Amount */}
+          <div>
+            <p className="font-medium">Transaction Amount:</p>
+            <p className={`text-xl ${expense.amount.startsWith("+") ? "text-green-500" : "text-red-500"}`}>
+              {expense.amount}
+            </p>
+          </div>
         </div>
       </div>
     </>
