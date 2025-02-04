@@ -3,10 +3,11 @@ import ProductCard from "../components/ProductCard";
 import ExpenseItem from "../components/ExpenseItem";
 import MainLayout from "../layouts/MainLayout";
 import PromoCard from "../components/PromoCard";
-import { Button } from "@mui/material";
 import { fetchTatianaData } from "../utils/api"; // Import API function
+import { useNavigate } from "react-router-dom"; // Import navigation hook
 
 const Dashboard = () => {
+  const navigate = useNavigate(); // Initialize navigate
   const [tatianaData, setTatianaData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -23,7 +24,6 @@ const Dashboard = () => {
   }, []);
 
   if (loading) return <p className="text-center">Loading...</p>;
-
   if (!tatianaData) return <p className="text-center text-red-500">Error loading data</p>;
 
   return (
@@ -54,9 +54,12 @@ const Dashboard = () => {
           {/* Expenses Section */}
           <div className="flex justify-between items-center">
             <h3 className="text-lg font-semibold mt-4">Expenses</h3>
-            <Button variant="text" className="text-blue-600 hover:text-blue-700">
+            <button
+              className="px-3 py-1 text-sm text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+              onClick={() => navigate("/expenses")}
+            >
               View All
-            </Button>
+            </button>
           </div>
 
           {/* Expense List */}
