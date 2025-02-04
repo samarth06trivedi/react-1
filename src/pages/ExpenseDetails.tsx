@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchTatianaData } from "../utils/api";
-import MainLayout from "../layouts/MainLayout";
-import ExpenseItem from "../components/ExpenseItem";
+
 
 const ExpenseDetails = () => {
   const { expenseId } = useParams(); // Get the expense index from URL
@@ -24,34 +23,47 @@ const ExpenseDetails = () => {
   if (!tatianaData || !expense) return <p className="text-center">Loading...</p>;
 
   return (
-    <MainLayout>
-      <div className="p-6">
-        <h2 className="text-lg font-semibold mb-4">Transaction Details</h2>
-        <div className="relative">
-          <div className="flex flex-col gap-2">
-            <ExpenseItem
-              name={expense.company}
-              date={expense.date}
-              amount={expense.amount}
-              positive={expense.amount.startsWith("+")}
-              photo={
-                expense.company === "Avanada Inc."
-                  ? "/src/assets/logos/avanade.jpg"
-                  : expense.company === "Bougue Mc"
-                  ? "/src/assets/logos/Bougue.png"
-                  : expense.company === "Magesty"
-                  ? "/src/assets/logos/magesty.jpg"
-                  : expense.company === "Angela Stant"
-                  ? "/src/assets/profile-pictures/Angela.jpg"
-                  : expense.company === "Star Train&J"
-                  ? "/src/assets/logos/Star-train.jpg"
-                  : "/src/assets/logos/default.jpg"
-              }
-            />
+    <>
+      <div className="p-6 max-w-xl mx-auto">
+        {/* Profile Photo */}
+        <div className="flex items-center space-x-4 mb-6">
+          <img
+            src={
+              expense.company === "Avanada Inc."
+                ? "/src/assets/logos/avanade.jpg"
+                : expense.company === "Bougue Mc"
+                ? "/src/assets/logos/Bougue.png"
+                : expense.company === "Magesty"
+                ? "/src/assets/logos/magesty.jpg"
+                : expense.company === "Angela Stant"
+                ? "/src/assets/profile-pictures/Angela.jpg"
+                : expense.company === "Star Train&J"
+                ? "/src/assets/logos/Star-train.jpg"
+                : "/src/assets/logos/default.jpg"
+            }
+            alt="Profile"
+            className="w-16 h-16 rounded-full object-cover"
+          />
+          <div>
+            <h3 className="text-xl font-semibold">{expense.company}</h3>
           </div>
         </div>
+
+        {/* Transaction Date */}
+        <div className="mb-4">
+          <p className="font-medium">Transaction Date:</p>
+          <p>{expense.date}</p>
+        </div>
+
+        {/* Transaction Amount */}
+        <div>
+          <p className="font-medium">Transaction Amount:</p>
+          <p className={`text-xl ${expense.amount.startsWith("+") ? "text-green-500" : "text-red-500"}`}>
+            {expense.amount}
+          </p>
+        </div>
       </div>
-    </MainLayout>
+    </>
   );
 };
 

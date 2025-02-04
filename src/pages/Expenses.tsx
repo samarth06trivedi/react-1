@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import navigation hook
 import { fetchTatianaData } from "../utils/api";
 import ExpenseItem from "../components/ExpenseItem";
-import MainLayout from "../layouts/MainLayout";
 import ProductCard from "../components/ProductCard";
 import PromoCard from "../components/PromoCard";
 
@@ -27,7 +26,7 @@ const Expenses = () => {
   if (!tatianaData) return <p className="text-center text-red-500">Error loading data</p>;
 
   return (
-    <MainLayout>
+    <>
       <div className="grid grid-cols-12 gap-4">
         {/* Main Content */}
         <div className="col-span-9 bg-white p-6 rounded-xl shadow-md">
@@ -116,7 +115,7 @@ const Expenses = () => {
           <PromoCard />
         </div>
       </div>
-    </MainLayout>
+    </>
   );
 };
 
