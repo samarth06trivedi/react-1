@@ -1,6 +1,8 @@
-import { BASE_API_URL } from "../constant/config"; // Import base API URL
+import { TATIANA_API } from "../constant/api"; // Import base API URL
+// import dotenv from "dotenv";
+// dotenv.config();
+const BASE_API_URL = import.meta.env.VITE_BASE_API_URL; 
 
-const TATIANA_API = import.meta.env.VITE_TATIANA_API; // Get endpoint from .env
 
 export const fetchTatianaData = async () => {
   try {
