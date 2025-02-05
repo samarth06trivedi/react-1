@@ -27,7 +27,7 @@ const Expenses = () => {
     <>
       <div className="grid grid-cols-12 gap-4">
         {/* Main Content */}
-        <div className="col-span-9 bg-white p-6 rounded-xl shadow-md">
+        <div className=" col-span-full bg-white p-6 rounded-xl shadow-md">
           <h2 className="text-lg font-semibold">{tatianaData.name}'s Dashboard</h2>
 
           {/* Expense List (EXACTLY as in Dashboard.tsx) */}

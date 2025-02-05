@@ -26,7 +26,7 @@ const ExpenseDetails = () => {
     <>
       <div className="grid grid-cols-12 gap-4 p-6">
         {/* Left Column - Expense Details */}
-        <div className="col-span-9 bg-white p-6 rounded-xl shadow-md">
+        <div className="col-span-full bg-white p-6 rounded-xl shadow-md">
           {/* Profile Photo and Company Name */}
           <div className="flex items-center space-x-4 mb-6">
             <img
