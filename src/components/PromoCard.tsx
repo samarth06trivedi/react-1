@@ -1,6 +1,9 @@
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const PromoCard = () => {
+  const navigate = useNavigate(); // Define navigate inside the component
+
   return (
     <div
       className="relative w-full h-52 rounded-xl text-white flex items-center px-6"
@@ -22,6 +25,7 @@ const PromoCard = () => {
             variant="contained"
             className="bg-blue-600 hover:bg-blue-700 text-white"
             endIcon={<span>→</span>}
+            onClick={() => navigate("/increase-plan")} // Now navigate is defined properly
           >
             Increase your plan
           </Button>

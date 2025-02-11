@@ -1,0 +1,27 @@
+{
+    "routes": [
+      {
+        "path": "/",
+        "layout": "MainLayout",
+        "element": "Dashboard",
+        "children": [
+          {
+            "path": "expenses",
+            "layout": "ExpenseLayout",
+            "element": "Expenses",
+            "children": [
+              {
+                "path": ":expenseId",
+                "element": "ExpenseDetails"
+              }
+            ]
+          },
+          {
+            "path": "increase-plan",
+            "element": "IncreasePlan"
+          }
+        ]
+      }
+    ]
+  }
+  
